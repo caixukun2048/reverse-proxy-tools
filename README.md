@@ -1,17 +1,17 @@
 # reverse-proxy-tools
 
-通用 Nginx + Let's Encrypt 反代管理脚本，不绑定任何面板，任何后端都能反代。
+通用 Nginx 反代管理，一个命令搞定新增和删除。
 
-## 使用
+## 一行运行
 
 ```bash
-bash reverse-proxy.sh
+bash <(curl -fsSL https://raw.githubusercontent.com/caixukun2048/reverse-proxy-tools/main/reverse-proxy.sh)
 ```
 
-先显示当前所有反代域名，然后选择：
+跑起来先列出当前所有反代域名，再选：
 
-- `1` 删除一个反代（按编号选，删前再确认一次，配置和证书一起删）
-- `2` 新增一个反代（输域名和后端地址，例如 `127.0.0.1:7001`，自动写 Nginx 配置、申请 Let's Encrypt 证书并开启 HTTPS）
+- `1` 删除（按编号选，删前确认，配置和证书一起删）
+- `2` 新增（输域名和后端，如 `127.0.0.1:7001`）
 - `0` 退出
 
-注意：后端要填服务实际监听的地址和端口。服务在本机 7001 端口时填 `127.0.0.1:7001`，不要填服务器公网 IP 的 80 端口（那是 Nginx 自己，会反代成死循环）。
+后端填服务实际监听的地址，不要填服务器公网 IP 的 80 端口，那是 Nginx 自己。
